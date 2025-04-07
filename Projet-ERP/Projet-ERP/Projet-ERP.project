@@ -100,13 +100,11 @@
     <File Name="FramePrincipal.fbp"/>
   </VirtualDirectory>
   <VirtualDirectory Name="include">
-    <File Name="MyApp.h"/>
-    <File Name="EvtFramePrincipal.h"/>
-    <File Name="FramePrincipal.h"/>
+    <File Name="AccesDonneesCapteurs.h"/>
+    <File Name="QualiteAir.h"/>
   </VirtualDirectory>
   <VirtualDirectory Name="src">
-    <File Name="MyApp.cpp"/>
-    <File Name="FramePrincipal.cpp"/>
-    <File Name="EvtFramePrincipal.cpp"/>
+    <File Name="AccesDonneesCapteurs.cpp"/>
+    <File Name="QualiteAir.cpp"/>
   </VirtualDirectory>
 </CodeLite_Project>
