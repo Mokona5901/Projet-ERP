@@ -7,6 +7,17 @@
   </Plugins>
   <Description/>
   <Dependencies/>
+  <VirtualDirectory Name="include">
+    <File Name="Mqtt.h"/>
+    <File Name="AccesDonneesCapteurs.h"/>
+    <File Name="QualiteAir.h"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="src">
+    <File Name="Mqtt.cpp"/>
+    <File Name="main.cpp"/>
+    <File Name="AccesDonneesCapteurs.cpp"/>
+    <File Name="QualiteAir.cpp"/>
+  </VirtualDirectory>
   <Settings Type="Executable">
     <GlobalSettings>
       <Compiler Options="" C_Options="" Assembler="">
@@ -96,15 +107,4 @@
       </Completion>
     </Configuration>
   </Settings>
-  <VirtualDirectory Name="resources">
-    <File Name="FramePrincipal.fbp"/>
-  </VirtualDirectory>
-  <VirtualDirectory Name="include">
-    <File Name="AccesDonneesCapteurs.h"/>
-    <File Name="QualiteAir.h"/>
-  </VirtualDirectory>
-  <VirtualDirectory Name="src">
-    <File Name="AccesDonneesCapteurs.cpp"/>
-    <File Name="QualiteAir.cpp"/>
-  </VirtualDirectory>
 </CodeLite_Project>

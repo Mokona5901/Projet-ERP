@@ -1,16 +1,16 @@
+/**
+ * @file AccesDonneesCapteurs.h
+ * @author Samuel Tadebois-Louchart
+ * @brief Déclaration de la classe AccesDonneesCapteurs
+ * @version 1.0
+ * @date 07-04-2025
+ */
+
 #include <time.h>
 
-struct variables{
-	int module_sonoff;
-	time_t date;
-	double temperature;
-	double hygrometrie;
-	double co2;
-};
-
-class AccesDonneesCapteurs{
+class AccesDonneesCapteurs {
 public:
-	variables LireCapteurs(struct &variables);
-	AccesDonneesCapteurs();
-	~AccesDonneesCapteurs();
+    bool LireCapteurs(int &module_sonoff, time_t &date, double &temperature, double &hygrometrie, double &co2);
+    AccesDonneesCapteurs();
+    ~AccesDonneesCapteurs();
 };

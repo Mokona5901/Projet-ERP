@@ -1,8 +1,17 @@
+/**
+ * @file QualiteAir.h
+ * @author Samuel Tadebois-Louchart
+ * @brief Declaration de la classe QualiteAir
+ * @version 1.0
+ * @date 07-04-2025
+ */
+
 #include <time.h>
+#include <string>
 
 class QualiteAir{
 public:
-	void SetQualite(int module_sonoff, float qualite_air, time_t date);
+	std::string SetQualite(int &module_sonoff, float &qualite_air, time_t &date);
 	QualiteAir();
 	~QualiteAir();
 
