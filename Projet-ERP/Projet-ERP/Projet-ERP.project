@@ -97,14 +97,17 @@
     </Configuration>
   </Settings>
   <VirtualDirectory Name="resources">
+    <File Name="FrameMesures.fbp"/>
     <File Name="FramePrincipal.fbp"/>
   </VirtualDirectory>
   <VirtualDirectory Name="include">
+    <File Name="FrameMesures.h"/>
     <File Name="MyApp.h"/>
     <File Name="EvtFramePrincipal.h"/>
     <File Name="FramePrincipal.h"/>
   </VirtualDirectory>
   <VirtualDirectory Name="src">
+    <File Name="FrameMesures.cpp"/>
     <File Name="MyApp.cpp"/>
     <File Name="FramePrincipal.cpp"/>
     <File Name="EvtFramePrincipal.cpp"/>
