@@ -1,6 +1,39 @@
 -- Script pour la BDD du Projet ERP
-CREATE TABLE Capteurs (integer id SERIAL PRIMARY KEY NOT NULL, integer id_module FOREIGN KEY NOT NULL, double precision temperature NOT NULL, double precision hygrometrie NOT NULL, double precision co2 NOT NULL, timestamp date NOT NULL)
-CREATE TABLE QualiteAir (integer id SERIAL PRIMARY KEY NOT NULL, integer id_module FOREIGN KEY NOT NULL, real qualite_air NOT NULL, timestamp date NOT NULL)
-CREATE TABLE MesuresVentilation (id integer SERIAL PRIMARY KEY NOT NULL, id_module integer FOREIGN KEY NOT NULL, debit_air double precision NOT NULL, puissance_ventilation integer NOT NULL, date timestamp NOT NULL)
-CREATE TABLE ParametresVentilation (id integer SERIAL PRIMARY KEY NOT NULL, id_module integer FOREIGN KEY NOT NULL, puissance_demandee integer NOT NULL, date timestamp NOT NULL)
-CREATE TABLE Utilisateurs (id integer SERIAL PRIMARY KEY NOT NULL, login text NOT NULL NOT NULL, mdp_hash text NOT NULL, roles text NOT NULL) 
+
+CREATE TABLE Capteurs (
+    id SERIAL PRIMARY KEY,
+    id_module INTEGER NOT NULL,
+    temperature DOUBLE PRECISION NOT NULL,
+    hygrometrie DOUBLE PRECISION NOT NULL,
+    co2 DOUBLE PRECISION NOT NULL,
+    date TIMESTAMP NOT NULL
+);
+
+CREATE TABLE QualiteAir (
+    id SERIAL PRIMARY KEY,
+    id_module INTEGER NOT NULL,
+    qualite_air REAL NOT NULL,
+    date TIMESTAMP NOT NULL
+);
+
+CREATE TABLE MesuresVentilation (
+    id SERIAL PRIMARY KEY,
+    id_module INTEGER NOT NULL,
+    debit_air DOUBLE PRECISION NOT NULL,
+    puissance_ventilation INTEGER NOT NULL,
+    date TIMESTAMP NOT NULL
+);
+
+CREATE TABLE ParametresVentilation (
+    id SERIAL PRIMARY KEY,
+    id_module INTEGER NOT NULL,
+    puissance_demandee INTEGER NOT NULL,
+    date TIMESTAMP NOT NULL
+);
+
+CREATE TABLE Utilisateurs (
+    id SERIAL PRIMARY KEY,
+    login TEXT NOT NULL,
+    mdp_hash TEXT NOT NULL,
+    roles TEXT NOT NULL
+);
