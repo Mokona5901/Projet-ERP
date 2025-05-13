@@ -16,8 +16,8 @@ CREATE TABLE zone (
     nom text NOT NULL,
     coordonnees_x INTEGER NOT NULL,
     coordonnees_y INTEGER NOT NULL,
-    puissance actuelle INTEGER NOT NULL,
-    puissance demandée INTEGER NOT NULL,
+    puissance_actuelle INTEGER NOT NULL,
+    puissance_demandee INTEGER NOT NULL,
     date TIMESTAMP NOT NULL
 );
 
@@ -32,5 +32,5 @@ CREATE TABLE utilisateur (
     id SERIAL PRIMARY KEY,
     login TEXT NOT NULL,
     mdp_hash TEXT NOT NULL,
-    roles TEXT NOT NULL
+    is_admin BOOLEAN NOT NULL
 );
