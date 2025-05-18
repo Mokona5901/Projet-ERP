@@ -23,7 +23,6 @@ using namespace std;
  * @class Mqtt
  * This class is responsible for the mqtt connection using mosquittopp.
  */
- 
 class Mqtt : public mosqpp::mosquittopp {
 private:
     string id;

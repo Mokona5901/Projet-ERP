@@ -14,12 +14,10 @@
  */
 
 AccesDonneesCapteurs::AccesDonneesCapteurs() {
-	mqtt = new Mqtt("Rapi", "ventilation", subscription_topic_list, 
-										   "0.0.0.0", // localhost pour l'instant //IP Samuel "192.168.1.102",
-										   PORT, "test_user","test_pwd");
-	//std::cout<<"Running Mosquitto broker"<<std::endl;
-	//system("./mosquitto_broker.sh");
-	//std::cout<<"Mosquitto broker started"<<std::endl;
+	mqtt = new Mqtt("Rapi", "ventilation", subscription_topic_list, "192.168.1.102", PORT, "test_user","test_pwd");
+	/*std::cout << "Starting Mosquitto MQTT broker..." << std::endl;
+	system("mosquitto -c /etc/mosquitto/conf.d/mosquitto.conf -v &");
+	std::cout << "Broker is running. Clients can now connect." << std::endl;*/
 }
 
 /**
