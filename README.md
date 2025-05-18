@@ -91,7 +91,7 @@ Le broker MQTT doit être configuré pour écouter sur le port 35353 en local, a
 * Exemple avec `g++` :
 
   ```bash
-  g++ -std=c++11 -o ProjetERP App.cpp AccesDonneesCapteurs.cpp Mqtt.cpp `wx-config --cxxflags --libs` -lmosquittopp -lpthread
+  g++ -std=c++17 -o ProjetERP App.cpp AccesDonneesCapteurs.cpp Mqtt.cpp `wx-config --cxxflags --libs` -lmosquittopp -lpthread
   ```
 
   Adaptez selon votre environnement.
