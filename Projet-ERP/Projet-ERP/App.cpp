@@ -1,4 +1,13 @@
+/**
+ * @file App.cpp
+ * @author Samuel Tadebois-Louchart
+ * @brief Implémentation de la classe App
+ * @version 1.0
+ * @date 18-05-2025
+ */
+
 #include "App.h"
+#include "BDD.h"
 
 IMPLEMENT_APP_CONSOLE(App)
 
@@ -11,7 +20,7 @@ App::~App(){
 }
 
 int App::OnExit(){
-	return TRUE;
+	return true;
 }
 
 bool App::OnInit(){
@@ -22,11 +31,38 @@ bool App::OnInit(){
 
 	// Initialization code here
 	AccesDonneesCapteurs capteurs;
-	sleep(2);
-	
 	double temperature, hygrometrie, co2;
 	int module;
 	time_t date;
+	
+	//Database test code
+	/*std::string dsn = "ProjetERP";
+    BDD db(dsn);
+
+    if (!db.IsConnexionOK()) {
+        std::cerr << "Erreur de connexion : " << db.GetLastError() << std::endl;
+        return 1;
+    }
+
+    std::string requete = "SELECT * FROM mesure_qualite_air LIMIT 5";
+
+    if (!db.ExecuteSelect(requete)) {
+        std::cerr << "Erreur d'exécution de la requête : " << db.GetLastError() << std::endl;
+        return 1;
+    }
+
+    auto result = db.GetLastResult();
+    unsigned int nbCols = db.GetNombreColonnesResultat();
+
+    std::cout << "Résultats de la requête :" << std::endl;
+
+    for (size_t i = 0; i < result.size(); ++i) {
+        std::cout << result[i] << "\t";
+
+        if ((i + 1) % nbCols == 0) std::cout << std::endl;
+    }*/
+
+	//test communication avec la classe AccesDonneesCapteurs + subscribe Mqtt
 	if (capteurs.enregistrerQualiteAir(module, date, temperature, hygrometrie, co2)) {
 		std::cout<<"Lecture des capteurs réussie: "<<std::endl;
 		std::cout<<"Module: "<<module <<std::endl;
@@ -35,12 +71,13 @@ bool App::OnInit(){
 		std::cout<<"Hygrométrie: "<<hygrometrie<<"%"<<std::endl;
 		std::cout<<"CO2: "<<co2<<"ppm"<<std::endl;
 		std::cout<<"La qualité de l'air est : "<<capteurs.computeQualiteAir(module, co2, date)<<std::endl;
-		capteurs.pushbackTopic("ventilation/#");
-		cout << "type quit to quit" << endl;
-		string in;
+		capteurs.pushbackTopic("ventilation/groupe1/#");
+		cout << "type quit or q to quit" << endl;
+		std::string in;
 		do {
-		cin >> in;
-		}while (in != "quit");
+		std::cin >> in;
+		}while (in != "quit" && in != "q");
+		exit(0);
 	}
 	else {
 		std::cerr << "Erreur de lecture des capteurs"<<std::endl;

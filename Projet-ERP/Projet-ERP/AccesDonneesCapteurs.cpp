@@ -3,7 +3,7 @@
  * @author Samuel Tadebois-Louchart
  * @brief Implémentation de la classe AccesDonneesCapteurs
  * @version 1.1
- * @date 06-05-2025
+ * @date 18-05-2025
  */
 
 #include "AccesDonneesCapteurs.h"
@@ -15,11 +15,8 @@
 
 AccesDonneesCapteurs::AccesDonneesCapteurs() {
 	mqtt = new Mqtt("Rapi", "ventilation", subscription_topic_list, 
-										   "0.0.0.0", // localhost pour l'instant //IP Samuel "192.168.1.102",
+										   "0.0.0.0", // localhost pour l'instant, en attedant IP Raspberry //IP Samuel "192.168.1.102",
 										   PORT, "test_user","test_pwd");
-	//std::cout<<"Running Mosquitto broker"<<std::endl;
-	//system("./mosquitto_broker.sh");
-	//std::cout<<"Mosquitto broker started"<<std::endl;
 }
 
 /**
@@ -42,6 +39,7 @@ AccesDonneesCapteurs::~AccesDonneesCapteurs() {
  * @return false		La lecture d'au moins un capteur a échoué 
  */
 
+//TODO Obtain ODBC database class of Enzo for database testing
 bool AccesDonneesCapteurs::enregistrerQualiteAir(int &module_sonoff, time_t &date, double &temperature, double &hygrometrie, double &co2) {
 	// Jeu de test pour les valeurs des capteurs
 	module_sonoff = 1;
@@ -81,7 +79,6 @@ std::string AccesDonneesCapteurs::computeQualiteAir(int &module_sonoff, double &
 	return retour;
 }
 
-void AccesDonneesCapteurs::pushbackTopic(const std::string &topic) {
-	subscription_topic_list.push_back(topic);
-	mqtt->subscribe();
+void AccesDonneesCapteurs::pushbackTopic(std::string topic) {
+	mqtt->addSubscriptionTopic(topic);
 }

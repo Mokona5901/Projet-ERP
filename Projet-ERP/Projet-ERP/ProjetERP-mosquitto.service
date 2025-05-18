@@ -1,0 +1,12 @@
+[Unit]
+Description=Mosquitto Broker pour ProjetERP
+After=network.target
+
+[Service]
+ExecStart=/usr/sbin/mosquitto -c /etc/mosquitto/conf.d/mosquitto.conf
+Restart=on-failure
+User=mosquitto
+Group=mosquitto
+
+[Install]
+WantedBy=multi-user.target

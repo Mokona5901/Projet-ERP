@@ -3,7 +3,7 @@
  * @author Samuel Tadebois-Louchart
  * @brief Déclaration de la classe AccesDonneesCapteurs
  * @version 1.1
- * @date 06-05-2025
+ * @date 18-05-2025
  */
 
 #include <time.h>
@@ -15,7 +15,7 @@ class AccesDonneesCapteurs {
 public:
 	bool enregistrerQualiteAir(int &module_sonoff, time_t &date, double &temperature, double &hygrometrie, double &co2);
 	std::string computeQualiteAir(int &module_sonoff, double &co2, time_t &date);
-	void pushbackTopic(const std::string &topic);
+	void pushbackTopic(std::string topic);
 	AccesDonneesCapteurs();
 	~AccesDonneesCapteurs();
 private:

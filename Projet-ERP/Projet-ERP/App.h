@@ -1,9 +1,16 @@
+/**
+ * @file App.h
+ * @author Samuel Tadebois-Louchart
+ * @brief Déclaration de la classe App
+ * @version 1.0
+ * @date 18-05-2025
+ */
+
 #ifndef APP_H
 #define APP_H
 
 #include <wx/app.h>
 #include <wx/cmdline.h>
-#include <unistd.h>
 #include "AccesDonneesCapteurs.h"
 #include "Mqtt.h"
 
