@@ -6,7 +6,7 @@ CREATE TABLE mesure_qualite_air (
     temperature DOUBLE PRECISION NOT NULL,
     hygrometrie DOUBLE PRECISION NOT NULL,
     co2 DOUBLE PRECISION NOT NULL,
-    qualite_air REAL NOT NULL,
+    qualite_air TEXT NOT NULL,
     date TIMESTAMP NOT NULL
 );
 
