@@ -1,6 +1,43 @@
 -- Script pour la BDD du Projet ERP
-CREATE TABLE Capteurs (integer id PRIMARY KEY NOT NULL, integer id_module FOREIGN KEY NOT NULL, double precision temperature NOT NULL, double precision hygrometrie NOT NULL, double precision co2 NOT NULL, timestamp date NOT NULL)
-CREATE TABLE QualiteAir (integer id PRIMARY KEY NOT NULL, integer id_module FOREIGN KEY NOT NULL, real qualite_air NOT NULL, timestamp date NOT NULL)
-CREATE TABLE MesuresVentilation (id integer PRIMARY KEY NOT NULL, id_module integer FOREIGN KEY NOT NULL, debit_air double precision NOT NULL, puissance_ventilation integer NOT NULL, date timestamp NOT NULL)
-CREATE TABLE ParametresVentilation (id integer PRIMARY KEY NOT NULL, id_module integer FOREIGN KEY NOT NULL, puissance_demandee integer NOT NULL, date timestamp NOT NULL)
-CREATE TABLE Utilisateurs (id integer PRIMARY KEY NOT NULL, login text NOT NULL NOT NULL, mdp_hash text NOT NULL, roles text NOT NULL)
+
+CREATE TABLE mesure_qualite_air (
+    id_mesure_qualite_air SERIAL PRIMARY KEY,
+    module_id INTEGER NOT NULL, 
+    temperature DOUBLE PRECISION NOT NULL,
+    hygrometrie DOUBLE PRECISION NOT NULL,
+    co2 DOUBLE PRECISION NOT NULL,
+    qualite_air REAL NOT NULL,
+    date TIMESTAMP NOT NULL
+);
+
+CREATE TABLE capteur (
+    id_capteur SERIAL PRIMARY KEY,
+    mesure_qualite_air_id INTEGER NOT NULL,
+    sonoff_ip TEXT NOT NULL
+);
+
+CREATE TABLE zone (
+    id_zone SERIAL PRIMARY KEY,
+    module_id INTEGER NOT NULL,
+    nom TEXT NOT NULL,
+    coordonnees_x INTEGER NOT NULL,
+    coordonnees_y INTEGER NOT NULL,
+    adresse_ip_ventilateur TEXT NOT NULL,
+    puissance_actuelle_pourcentage INTEGER NOT NULL,
+    puissance_demandee_pourcentage INTEGER NOT NULL,
+    date TIMESTAMP NOT NULL
+);
+
+CREATE TABLE mesure_ventilation (
+    id_mesure_ventilation SERIAL PRIMARY KEY,
+    module_id INTEGER NOT NULL,
+    debit_air REAL NOT NULL,
+    date TIMESTAMP NOT NULL
+);
+
+CREATE TABLE utilisateur (
+    id SERIAL PRIMARY KEY,
+    login TEXT NOT NULL,
+    mdp_hash TEXT NOT NULL,
+    is_admin BOOLEAN NOT NULL
+);
