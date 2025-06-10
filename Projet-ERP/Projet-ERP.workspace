@@ -5,10 +5,12 @@
     <WorkspaceConfiguration Name="Debug">
       <Environment/>
       <Project Name="Projet-ERP" ConfigName="Debug"/>
+      <Project Name="Projet_Ventilation_ERP" ConfigName="Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release">
       <Environment/>
       <Project Name="Projet-ERP" ConfigName="Release"/>
+      <Project Name="Projet_Ventilation_ERP" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>

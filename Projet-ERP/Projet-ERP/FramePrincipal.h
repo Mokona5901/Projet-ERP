@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////
-// C++ code generated with wxFormBuilder (version 4.2.1-0-g80c4cb6)
+// C++ code generated with wxFormBuilder (version Oct 26 2018)
 // http://www.wxformbuilder.org/
 //
 // PLEASE DO *NOT* EDIT THIS FILE!
@@ -9,63 +9,48 @@
 
 #include <wx/artprov.h>
 #include <wx/xrc/xmlres.h>
-#include <wx/intl.h>
-#include <wx/button.h>
-#include <wx/string.h>
 #include <wx/bitmap.h>
 #include <wx/image.h>
 #include <wx/icon.h>
+#include <wx/statbmp.h>
 #include <wx/gdicmn.h>
 #include <wx/font.h>
 #include <wx/colour.h>
 #include <wx/settings.h>
-#include <wx/statbmp.h>
-#include <wx/gbsizer.h>
+#include <wx/string.h>
 #include <wx/sizer.h>
 #include <wx/listctrl.h>
 #include <wx/frame.h>
-#include <wx/panel.h>
 #include <wx/statline.h>
-#include <wx/slider.h>
 #include <wx/textctrl.h>
+#include <wx/slider.h>
+#include <wx/button.h>
+#include <wx/panel.h>
+
+#define ID_LIST_CTRL 200
+#define ID_TEXT_CTRL 201
 
 ///////////////////////////////////////////////////////////////////////////
 
+
 ///////////////////////////////////////////////////////////////////////////////
-/// Class Projet-ERP
+/// Class FramePrincipal
 ///////////////////////////////////////////////////////////////////////////////
-class Projet-ERP : public wxFrame
+class FramePrincipal : public wxFrame
 {
 	private:
 
 	protected:
-		wxButton* m_button4;
-		wxStaticBitmap* CarteLocaux;
-		wxListCtrl* m_listeCtrlGroupeVentilation;
+		wxStaticBitmap* m_bitmapCarteLocaux;
+		wxListCtrl* m_listCtrlGroupesVentilation;
 
 	public:
 
-		Projet-ERP( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxEmptyString, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 900,500 ), long style = wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL );
+		FramePrincipal( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("FramePrincipal"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 900,500 ), long style = wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL );
 
-		~Projet-ERP();
-
-};
-
-///////////////////////////////////////////////////////////////////////////////
-/// Class PanelgbSizer
-///////////////////////////////////////////////////////////////////////////////
-class PanelgbSizer : public wxPanel
-{
-	private:
-
-	protected:
-		wxButton* m_button5;
-
-	public:
-
-		PanelgbSizer( wxWindow* parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 500,300 ), long style = wxTAB_TRAVERSAL, const wxString& name = wxEmptyString );
-
-		~PanelgbSizer();
+		~FramePrincipal();
+		void OnListeRecu(wxCommandEvent& event);
+		void OnListeSelect(wxCommandEvent& event);
 
 };
 
@@ -77,8 +62,9 @@ class ControleVentilation : public wxPanel
 	private:
 
 	protected:
-		wxStaticLine* m_staticline3;
-		wxStaticLine* m_staticline31;
+		wxStaticLine* m_staticline1;
+		wxTextCtrl* m_textCtrlTest;
+		wxStaticLine* m_staticline2;
 		wxSlider* m_sliderChangementVitesseVentilation;
 		wxButton* m_buttonAPropos;
 		wxStaticBitmap* m_bitmapLogoCampus;
@@ -86,9 +72,9 @@ class ControleVentilation : public wxPanel
 	public:
 
 		ControleVentilation( wxWindow* parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 900,500 ), long style = wxTAB_TRAVERSAL, const wxString& name = wxEmptyString );
-
 		~ControleVentilation();
-
+		void OnTexteRecu(wxCommandEvent& event);
+		void OnBackClick(wxCommandEvent& event);
 };
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -103,8 +89,7 @@ class MyPanelAPropos : public wxPanel
 
 	public:
 
-		MyPanelAPropos( wxWindow* parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 900,500 ), long style = wxTAB_TRAVERSAL, const wxString& name = wxEmptyString );
-
+		MyPanelAPropos( wxWindow* parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 500,300 ), long style = wxTAB_TRAVERSAL, const wxString& name = wxEmptyString );
 		~MyPanelAPropos();
 
 };

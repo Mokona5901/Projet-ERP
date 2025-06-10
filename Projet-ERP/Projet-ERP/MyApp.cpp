@@ -1,11 +1,10 @@
-/***************************************************************
- * Name:      MyApp.cpp
- * Purpose:   Code for Application Class
- * Author:    Éric Laly (elaly@free.fr)
- * Created:   2007-09-21
- * Copyright: Éric Laly ()
- * License:
- **************************************************************/
+/**
+ * @file MyApp.cpp
+ * @author Enzo Flament
+ * @brief Implémentation de la classe MyApp
+ * @version 1.0
+ * @date 03-06-2025
+ */
 
 #ifdef WX_PRECOMP
 #include "wx_pch.h"
@@ -23,7 +22,7 @@ IMPLEMENT_APP(MyApp);
 bool MyApp::OnInit()
 {
     // on choisit le français comme langue
-    m_locale.Init(wxLANGUAGE_FRENCH );
+//    m_locale.Init(wxLANGUAGE_FRENCH );
 
     EvtFramePrincipal* frame_principal = new EvtFramePrincipal(0);
     frame_principal->Show();
