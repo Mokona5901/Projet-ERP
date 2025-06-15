@@ -3,13 +3,16 @@
  * @author Samuel Tadebois-Louchart
  * @brief Déclaration de la classe Mqtt
  * @version 1.1
- * @date 18-05-2025
+ * @date 15-06-2025
  */
 
 #ifndef SIMPLE_MQTT_CLIENT_MQTT_H
 #define SIMPLE_MQTT_CLIENT_MQTT_H
 
 #include <mosquittopp.h>
+#include <nlohmann/json.hpp>
+using json = nlohmann::json;
+#include <regex>
 #include <iostream>
 #include <cstring>
 #include <string>

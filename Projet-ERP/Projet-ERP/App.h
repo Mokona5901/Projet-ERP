@@ -11,6 +11,7 @@
 
 #include <wx/app.h>
 #include <wx/cmdline.h>
+#include <stdlib.h>
 #include "AccesDonneesCapteurs.h"
 #include "Mqtt.h"
 

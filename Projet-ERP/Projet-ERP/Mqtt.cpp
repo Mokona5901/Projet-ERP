@@ -3,7 +3,7 @@
  * @author Samuel Tadebois-Louchart
  * @brief Implémentation de la classe Mqtt
  * @version 1.1
- * @date 18-05-2025
+ * @date 15-06-2025
  */
 
 #include "Mqtt.h"
@@ -70,44 +70,106 @@ bool Mqtt::subscribe() {
 }
 
 void Mqtt::on_subscribe(int, int, const int *) {
-	cout << TAG << "Subscription succeeded." << endl;
+	cout << TAG << "Abonnement réussi" << endl;
+}
+
+struct DonneesCapteurs {
+    std::string heure;
+    double temperature = 0.0;
+    double hygrometrie = 0.0;
+    double co2 = 0.0;
+    std::string uniteTemperature;
+};
+
+bool parsePayloadCapteurs(const std::string& payload, DonneesCapteurs& data) {
+    try {
+        auto j = json::parse(payload);
+        data.heure = j.value("Time", "");
+        data.uniteTemperature = j.value("TempUnit", "C");
+
+        if (j.contains("THS01")) {
+            auto ths = j["THS01"];
+            data.temperature = ths.value("Temperature", 0.0);
+            data.hygrometrie = ths.value("Humidity", 0.0);
+        } else {
+            std::cerr << "Données du capteur THS01 manquantes\n";
+        }
+
+        if (j.contains("MHZ19")) {
+            auto mhz = j["MHZ19"];
+            data.co2 = mhz.value("CO2", 0.0);
+        } else {
+            std::cerr << "Données du capteur MH-Z19 manquantes\n";
+        }
+        return true;
+    } catch (const std::exception& e) {
+        std::cerr << "Erreur du parseur JSON: " << e.what() << "\n";
+        return false;
+    }
 }
 
 void Mqtt::on_message(const struct mosquitto_message *message) {
-	string payload = string(static_cast<char *>(message->payload), message->payloadlen);
-	string topic = string(message->topic);
-	cout << TAG << "payload: " << payload << endl;
-	cout << TAG << "topic: " << topic << endl;
+    std::string payload(static_cast<char *>(message->payload), message->payloadlen);
+    std::string topic = message->topic;
+
+    DonneesCapteurs donneesCapteurs;
+    if (parsePayloadCapteurs(payload, donneesCapteurs)) {
+        std::regex group_regex(R"(ventilation/groupe(\d+)/)");
+        std::smatch match;
+        std::string groupInfo = "N/A";
+
+        if (std::regex_search(topic, match, group_regex) && match.size() > 1) {
+            groupInfo = match[1];
+        } else {
+            std::cerr << TAG << "Impossible d'extraire le numéro de groupe depuis le topic" << std::endl;
+        }
+
+        std::cout << TAG << "Données du groupe " << groupInfo << " :" << std::endl
+                  << "Heure: " << donneesCapteurs.heure << std::endl
+                  << "Température: " << donneesCapteurs.temperature << "°" << donneesCapteurs.uniteTemperature << std::endl
+                  << "Hygrométrie: " << donneesCapteurs.hygrometrie << "%" << std::endl
+                  << "CO2: " << donneesCapteurs.co2 << "ppm" << std::endl
+                  << "Topic: " << topic << std::endl;
+    } else {
+        std::cerr << TAG << "Échec de l'analyse des données capteurs" << std::endl;
+    }
 }
 
+
 void Mqtt::on_disconnect(int rc) {
-	cout << TAG << "disconnection(" << rc << ")" << endl;
+	cout << TAG << "Déconnexion(" << rc << ")" << endl;
 }
 
 void Mqtt::on_connect(int rc)
 {
     if (rc == 0) {
-        cout << TAG << "connected with server" << endl;
+        cout << TAG << "connecté avec le broker" << endl;
         /*
          * Dès que la connexion est établie, on s’abonne à tous les topics présents dans la liste.
-         * Ceci permet d'assurer que la souscription est toujours active même après une reconnexion.
+         * Ceci permet d'assurer que l'abonnement est toujours actif même après une reconnexion.
          */
         if (!subscription_topic_list.empty()) {
             if (subscribe()) {
-                cout << TAG << "All topics subscribed successfully." << endl;
+                cout << TAG << "L'abonnement aux topics voulus a été réussi" << endl;
             } else {
-                cerr << TAG << "Subscription failed." << endl;
+                cerr << TAG << "L'abonnement a échoué" << endl;
             }
         }
     } else {
-        cout << TAG << "impossible to connect with server(" << rc << ")" << endl;
+        cout << TAG << "Impossible de se connecter au broker(" << rc << ")" << endl;
     }
 }
 
 void Mqtt::on_publish(int mid)
 {
-	cout << TAG << "Message (" << mid << ") succeed to be published " << endl;
+	cout << TAG << "Le message (" << mid << ") a bien été publié" << endl;
 }
+
+/**
+ * @brief Méthode qui permet d'ajouter un topic à s'abonner, ce que subscribe() fera
+ * 
+ * @param topic			Nom du topic auquel il faut s'abonner
+ */
 
 void Mqtt::addSubscriptionTopic(const std::string& topic) {
     subscription_topic_list.push_back(topic);
