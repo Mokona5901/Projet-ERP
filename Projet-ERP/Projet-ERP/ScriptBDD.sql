@@ -24,7 +24,7 @@ CREATE TABLE zone (
     coordonnees_y INTEGER NOT NULL,
     adresse_ip_ventilateur TEXT NOT NULL,
     puissance_actuelle_pourcentage INTEGER NOT NULL,
-    puissance_demandee_pourcentage INTEGER ,
+    puissance_demandee_pourcentage INTEGER NOT NULL ,
     date TIMESTAMP NOT NULL
 );
 
