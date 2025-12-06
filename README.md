@@ -81,4 +81,4 @@ Le projet est réalisé par une équipe de 4 étudiants, avec des rôles distinc
 
 ### Schéma de l'Architecture Principale
 
-![Schéma](Projet-ERP/img/schema.png)
+![Schéma](img/schema.png)
