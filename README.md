@@ -77,6 +77,6 @@ Le projet est réalisé par une équipe de 4 étudiants, avec des rôles distinc
 
 ---
 
-## Schémas du Système
+## Schéma du Système
 
 ![Schéma](img/schema.png)
