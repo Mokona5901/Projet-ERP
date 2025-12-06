@@ -4,7 +4,7 @@
 **Session :** 2025
 **Section :** BTS CIEL - Option Informatique et Réseaux
 
-## 📝 Description du Projet
+## Description du Projet
 
 Ce projet technique répond à une problématique sanitaire mise en lumière par la pandémie de COVID-19 : la nécessité de garantir une qualité de l'air optimale dans les Établissements Recevant du Public (ERP).
 
@@ -13,7 +13,7 @@ L'objectif est de développer un **système de supervision centralisé** pour la
 2.  Piloter les groupes de ventilation de manière coordonnée depuis un point unique.
 3.  Visualiser les données en temps réel et l'historique sur des interfaces ergonomiques (PC et Tablette).
 
-## 🎯 Objectifs Fonctionnels
+## Objectifs Fonctionnels
 
 Le système doit satisfaire les exigences suivantes :
 * **Centralisation :** Piloter l'ensemble des groupes de ventilation d'un bâtiment.
@@ -23,7 +23,7 @@ Le système doit satisfaire les exigences suivantes :
 
 ---
 
-## 🏗️ Architecture et Choix Techniques
+## Architecture et Choix Techniques
 
 Le système repose sur une architecture distribuée comprenant des modules de mesure, des modules de pilotage et des postes de supervision connectés via le réseau de l'entreprise.
 
@@ -49,7 +49,7 @@ Le système repose sur une architecture distribuée comprenant des modules de me
 
 ---
 
-## 👥 Répartition des Tâches (Étudiants)
+## Répartition des Tâches
 
 Le projet est réalisé par une équipe de 4 étudiants, avec des rôles distincts :
 
@@ -77,8 +77,6 @@ Le projet est réalisé par une équipe de 4 étudiants, avec des rôles distinc
 
 ---
 
-## 📊 Schémas du Système
+## Schémas du Système
 
-### Schéma de l'Architecture Principale
-
-![Schéma](Projet-ERP/img/schema.png)
+![Schéma](img/schema.png)
